@@ -2,18 +2,17 @@
   <div id="app">
     <img src="./assets/logo.png">
     <div id="my"></div>
-    <div @click="change">点击</div>
     <router-view/>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 export default {
   name: 'App',
   data () {
     return {
-      arr: [1, 2, 3, 4]
+
     }
   },
   methods: {

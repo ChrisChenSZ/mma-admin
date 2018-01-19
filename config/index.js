@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/mma/admin': {
+        target: 'http://test-admin.cwmmma.com:8011'
+
+      },
+      '/zuul/api': {
+        target: 'http://dev.daxianggame.com:8880'
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
