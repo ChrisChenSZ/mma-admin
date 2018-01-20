@@ -18,6 +18,9 @@ export default {
   methods: {
   },
   mounted () {
+    this.$http.login().then(res => {
+      console.log('登陆接口', res)
+    })
   }
 }
 </script>
