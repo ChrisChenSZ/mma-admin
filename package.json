@@ -19,11 +19,14 @@
     "axios": "^0.17.1",
     "element-ui": "^2.0.11",
     "jquery": "^3.2.1",
+    "js-cookie": "^2.2.0",
+    "node-sass": "^4.7.2",
+    "normalize.css": "^7.0.0",
+    "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "cross-env": "5.0.1",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",
@@ -41,6 +44,7 @@
     "chalk": "^2.0.1",
     "chromedriver": "^2.27.2",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "5.0.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.0",
     "eslint": "^4.15.0",
