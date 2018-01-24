@@ -1,0 +1,31 @@
+// 覆盖element-ui部分样式
+@import "../styles/color.scss";
+
+.el-container .default-header{
+  background: $blue-10;
+  font-size: 30px;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: bolder;
+}
+//.el-menu{
+//  background-color:#003a8c;
+//}
+.el-menu-item-group{
+  background-color: $blue-8;
+}
+//.el-menu-vertical-demo .el-menu-item{
+//  background-color: $blue-8 !important;
+//}
+//.el-submenu :hover{
+//  background-color: #096dd9;
+//}
+.tac .el-menu,
+.tac .el-menu-item{
+  border-right:0px;
+}
+//.submenu-title-noDropdown .el-menu-item{
+//  background-color: $blue-8;
+//}

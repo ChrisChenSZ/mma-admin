@@ -1,55 +1,34 @@
 <template>
-  <div>
-    <el-container>
+  <div class="layout">
+    <el-container class="home-container">
       <!--头部-->
-      <el-header>Chris 后台</el-header>
+      <el-header  height="100px" class="default-header" >Chris 后台</el-header>
       <!--内容-->
-      <el-container>
+      <el-container class="home-container">
         <!--侧边路由-->
-        <el-aside width="220px">
+        <el-aside width="252px">
           <el-row class="tac">
             <el-col>
               <el-menu
-                default-active="2"
+                :default-active="$route.path"
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
-                theme="dark"
                 text-color="#fff"
-                active-text-color="#ffd04b">
-                <el-submenu index="1">
-                  <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span>导航一</span>
-                  </template>
-                  <el-menu-item-group>
-                    <template slot="title">分组一</template>
-                    <el-menu-item index="1-1">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
-                  </el-menu-item-group>
-                  <el-menu-item-group title="分组2">
-                    <el-menu-item index="1-3">选项3</el-menu-item>
-                  </el-menu-item-group>
-                  <el-submenu index="1-4">
-                    <template slot="title">选项4</template>
-                    <el-menu-item index="1-4-1">选项1</el-menu-item>
-                  </el-submenu>
-                </el-submenu>
-                <el-menu-item index="2">
-                  <i class="el-icon-menu"></i>
-                  <span slot="title">导航二</span>
-                </el-menu-item>
-                <el-menu-item index="3">
-                  <i class="el-icon-setting"></i>
-                  <span slot="title">导航三</span>
-                </el-menu-item>
+                background-color="#003a8c"
+                active-text-color="#ffd04b"
+              >
+                <side-bar :routes="routes"></side-bar>
               </el-menu>
             </el-col>
           </el-row>
         </el-aside>
         <!--右边内容区-->
         <el-container>
-          <el-main>Main</el-main>
+          <el-main>
+            <!--第三层路由-->
+            <router-view></router-view>
+          </el-main>
           <!--右边内容区底部-->
           <el-footer>Footer</el-footer>
         </el-container>
@@ -59,7 +38,14 @@
 </template>
 
 <script>
+import SideBar from '@/view/layout/sideBar.vue'
+import routes from '@/router/routerConfig.js'
 export default {
+  data () {
+    return {
+      routes: routes
+    }
+  },
   methods: {
     handleOpen (key, keyPath) {
       console.log(key, keyPath)
@@ -67,27 +53,34 @@ export default {
     handleClose (key, keyPath) {
       console.log(key, keyPath)
     }
+  },
+  components: {
+    SideBar
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import "../../styles/color.scss";
+  .layout{
+    height: 100%;
+  }
   .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
+    background: $blue-8;
+    color:white;
     text-align: center;
     line-height: 60px;
   }
 
   .el-aside {
-    background-color: #D3DCE6;
+    background-color: $blue-9;
     color: #333;
     text-align: center;
     line-height: 200px;
   }
 
   .el-main {
-    background-color: #E9EEF3;
+    background-color: white;
     color: #333;
     text-align: center;
     line-height: 160px;
@@ -104,5 +97,11 @@ export default {
 
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
+  }
+/*.el-menu-item-group{*/
+  /*background-color: #0050b3;*/
+/*}*/
+  .home-container{
+    height: 100%;
   }
 </style>
