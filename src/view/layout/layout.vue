@@ -2,7 +2,7 @@
   <div class="layout">
     <el-container class="home-container">
       <!--头部-->
-      <el-header  height="100px" class="default-header" >Chris 后台</el-header>
+      <el-header  height="100px" class="default-header" >通用 后台</el-header>
       <!--内容-->
       <el-container class="home-container">
         <!--侧边路由-->
@@ -14,8 +14,8 @@
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
-                text-color="#fff"
-                background-color="#003a8c"
+                :text-color="'#fff'"
+                :background-color="tapColor"
                 active-text-color="#ffd04b"
               >
                 <side-bar :routes="routes"></side-bar>
@@ -30,7 +30,7 @@
             <router-view></router-view>
           </el-main>
           <!--右边内容区底部-->
-          <el-footer>Footer</el-footer>
+          <el-footer >Footer</el-footer>
         </el-container>
       </el-container>
     </el-container>
@@ -43,8 +43,35 @@ import routes from '@/router/routerConfig.js'
 export default {
   data () {
     return {
-      routes: routes
+      routes: routes,
+      tapColor: ''
     }
+  },
+  mounted () {
+    // 转为RGB(22,33,33) 因为谷歌拿不到背景颜色，要做兼容
+    HTMLElement.prototype.__defineGetter__('currentStyle', function () {
+      return this.ownerDocument.defaultView.getComputedStyle(this, null)
+    })
+    var color = document.getElementsByClassName('el-footer')[0].currentStyle.backgroundColor
+    function zeroFillHex (num, digits) {
+      var s = num.toString(16)
+      while (s.length < digits) {
+        s = '0' + s
+      }
+      return s
+    }
+    function rgb2hex (rgb) {
+      if (rgb.charAt(0) === '#') {
+        return rgb
+      }
+      var ds = rgb.split(/\D+/)
+      var decimal = Number(ds[1]) * 65536 + Number(ds[2]) * 256 + Number(ds[3])
+      console.log('fdsfds', zeroFillHex(decimal, 6))
+      return '#' + zeroFillHex(decimal, 6)
+    }
+    // RGB转化成16进制格式
+    this.tapColor = rgb2hex(color)
+    console.log(this.tapColor)
   },
   methods: {
     handleOpen (key, keyPath) {
@@ -61,7 +88,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "../../styles/color.scss";
+  @import "../../assets/styles/color.scss";
   .layout{
     height: 100%;
   }

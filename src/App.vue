@@ -23,8 +23,9 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "./styles/index.scss";
-@import "./styles/coverElementUi.scss";
+@import "./assets/styles/index.scss";
+@import "./assets/styles/coverElementUi.scss";
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

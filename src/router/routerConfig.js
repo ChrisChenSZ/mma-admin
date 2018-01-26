@@ -4,7 +4,7 @@ let _import = filePath => import(`@/view/${filePath}.vue`)
 export default [
   {
     path: '/',
-    redirect: '/home/index',
+    redirect: '/login',
     name: '我',
     hidden: true,
     noDropdown: true,
@@ -57,12 +57,19 @@ export default [
             ]
           }
         ]
-      },
-      {
-        path: '/test2',
-        name: '测试二',
-        noDropdown: true
       }
     ]
+  },
+  {
+    path: '/test',
+    name: '平常测试页',
+    hidden: true,
+    component: () => _import('test/test')
+  },
+  {
+    path: '/identifyCode',
+    name: '验证码',
+    hidden: true,
+    component: () => _import('identifyCode/identifyCode')
   }
 ]
