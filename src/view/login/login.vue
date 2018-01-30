@@ -40,6 +40,8 @@
 
 <script>
 import dragVerify from 'vue-drag-verify'
+import Cookies from 'js-cookie'
+import sha1 from 'sha1'
 export default {
   data () {
     return {
@@ -65,8 +67,15 @@ export default {
   },
   methods: {
     handleLogin () {
+      if (this.formLabelAlign.password) {
+        this.formLabelAlign.password = sha1(this.formLabelAlign.password)
+      }
+      this.$http.login(this.formLabelAlign.name, this.formLabelAlign.password).then(res => {
+        console.log('登陆接口', res)
+        Cookies.set('token', res.token)
+        this.$router.push({path: '/home'})
+      })
       console.log(this.formLabelAlign.name, this.formLabelAlign.password)
-      this.$router.push({path: '/home'})
     },
     chang () {
       alert(1)
