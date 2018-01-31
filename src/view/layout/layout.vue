@@ -2,7 +2,16 @@
   <div class="layout">
     <el-container class="home-container">
       <!--头部-->
-      <el-header  height="100px" class="default-header" >通用 后台</el-header>
+      <el-header  height="100px" class="default-header" >通用 后台
+        <el-menu  class="el-menu-demo" mode="horizontal">
+        <el-submenu index="2">
+          <template slot="title">账号</template>
+          <el-menu-item index="2-1">选项1</el-menu-item>
+          <el-menu-item index="2-2">选项2</el-menu-item>
+          <el-menu-item index="2-3" @click="loginOut">退出</el-menu-item>
+        </el-submenu>
+        </el-menu>
+      </el-header>
       <!--内容-->
       <el-container class="home-container">
         <!--侧边路由-->
@@ -40,6 +49,7 @@
 <script>
 import SideBar from '@/view/layout/sideBar.vue'
 import routes from '@/router/routerConfig.js'
+import cytCookies from '@/utils/cytCookies.js'
 export default {
   data () {
     return {
@@ -79,6 +89,10 @@ export default {
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath)
+    },
+    loginOut () {
+      cytCookies.rmToken()
+      this.$router.push({path: '/login'})
     }
   },
   components: {

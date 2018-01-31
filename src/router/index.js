@@ -10,7 +10,7 @@ const router = new Router({
   routes
 })
 router.beforeEach((to, from, next) => {
-  const token = Cookies.get('token')
+  const token = Cookies.get('mma_token')
   if (token) {
     console.log(2222)
     next()

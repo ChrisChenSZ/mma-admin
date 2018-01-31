@@ -14,12 +14,15 @@
             <svg class="icon user" aria-hidden="true">
               <use xlink:href="#icon-ai-password"></use>
             </svg>
-            <el-input v-model="formLabelAlign.password" :type="pwdType" placeholder="请输入密码" ></el-input>
+            <el-input v-model="formLabelAlign.password" :type="pwdType" placeholder="请输入密码"  @keyup.enter.native="handleLogin"></el-input>
           </el-form-item>
           <!--<el-form-item label="活动形式">-->
             <!--<el-input v-model="formLabelAlign.type"></el-input>-->
           <!--</el-form-item>-->
-          <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin" class="login-btn">登录</el-button>
+          <el-button type="primary" style="width:100%;margin-bottom:30px;"
+                     :loading="loading"
+                     @click.native.prevent="handleLogin"
+                     class="login-btn">登录</el-button>
         </el-form>
         <drag-verify :width="200"
                      :height="20"
@@ -40,7 +43,7 @@
 
 <script>
 import dragVerify from 'vue-drag-verify'
-import Cookies from 'js-cookie'
+import cytCookies from '@/utils/cytCookies.js'
 import sha1 from 'sha1'
 export default {
   data () {
@@ -67,18 +70,19 @@ export default {
   },
   methods: {
     handleLogin () {
+      console.log(111, this.formLabelAlign.password)
       if (this.formLabelAlign.password) {
-        this.formLabelAlign.password = sha1(this.formLabelAlign.password)
+        console.log('进入')
+        const password = sha1(this.formLabelAlign.password)
+        this.$http.login(this.formLabelAlign.name, password).then(res => {
+          console.log('登陆接口', res.data.token)
+          cytCookies.setToken(res.data.token)
+          this.$router.push({path: '/home'})
+        })
+        console.log(this.formLabelAlign.name, this.formLabelAlign.password)
       }
-      this.$http.login(this.formLabelAlign.name, this.formLabelAlign.password).then(res => {
-        console.log('登陆接口', res)
-        Cookies.set('token', res.token)
-        this.$router.push({path: '/home'})
-      })
-      console.log(this.formLabelAlign.name, this.formLabelAlign.password)
     },
     chang () {
-      alert(1)
     }
   },
   components: {
