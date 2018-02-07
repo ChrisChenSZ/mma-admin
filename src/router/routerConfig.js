@@ -29,6 +29,28 @@ export default [
     component: () => _import('login/login')
   },
   {
+    path: '/upload',
+    name: '上传',
+    component: () => _import('layout/layout'),
+    children: [
+      {
+        name: '上传1:单图片源码方式',
+        path: 'one',
+        component: () => _import('upload/one')
+      },
+      {
+        name: '上传2:饿了么上传',
+        path: 'two',
+        component: () => _import('upload/two')
+      },
+      {
+        name: '上传3:多图片源码',
+        path: 'third',
+        component: () => _import('upload/third')
+      }
+    ]
+  },
+  {
     path: '/events',
     name: '赛事',
     component: () => _import('layout/layout'),

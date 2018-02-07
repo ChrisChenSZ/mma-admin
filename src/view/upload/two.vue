@@ -1,6 +1,5 @@
 <template>
   <div>
-    <button onclick="alert(111)">点击</button>
     <el-upload
       action="/zuul/api/file/mma-test-officalsite/image"
       list-type="picture-card"
