@@ -17,7 +17,7 @@
           <template v-for="child in item.children">
             <side-bar :routes="[child]" v-if="child.children&&child.children.length > 0" :key="child.name"></side-bar>
             <router-link v-else :to="item.path + '/' + child.path" :key="child.name">
-              <el-menu-item :index="item.path + '/' + child.path">
+              <el-menu-item :index="item.path + '/' + child.path" class="child">
                 {{child.name}}
               </el-menu-item>
             </router-link>
@@ -60,5 +60,10 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss" scoped>
+  @import "../../assets/styles/color.scss";
+  .child{
+      // 设置路由背景色
+      background-color: $blue-10 !important;
+  }
 </style>

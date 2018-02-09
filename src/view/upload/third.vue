@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'hello',
   data () {
@@ -54,6 +55,8 @@ export default {
     },
     fileChange (el) {
       if (!el.target.files[0].size) return
+      console.log('总上传的文件', el.target.files)
+      this.submit(el.target.files[0])
       this.fileList(el.target)
       el.target.value = ''
     },
@@ -71,6 +74,7 @@ export default {
     },
     // 文件夹处理
     folders (files) {
+      console.log(111)
       let _this = this
       // 判断是否为原生file
       if (files.kind) {
@@ -118,7 +122,7 @@ export default {
             _this.imgList.push({
               file
             })
-            console.log(_this.imgList)
+            // console.log(_this.imgList)
           }
           image.src = file.src
         }
@@ -150,6 +154,22 @@ export default {
       el.stopPropagation()
       el.preventDefault()
       this.fileList(el.dataTransfer)
+    },
+    submit (file) {
+      event.preventDefault() // 取消默认行为
+      let formdata = new FormData()
+      formdata.append('file', file)
+      let config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'// 之前说的以表单传数据的格式来传递fromdata
+        }
+      }
+      axios.post('/zuul/api/file/mma-test-officalsite/image', formdata, config).then((res) => {
+        // 做处理
+        console.log('上传成功', res)
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
 }

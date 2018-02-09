@@ -35,14 +35,17 @@
         <!--右边内容区-->
         <el-container>
           <el-main>
+            <div>
+              <router-view></router-view>
+            </div>
             <!--第三层路由-->
-            <router-view></router-view>
           </el-main>
           <!--右边内容区底部-->
           <el-footer >Footer</el-footer>
         </el-container>
       </el-container>
     </el-container>
+
   </div>
 </template>
 

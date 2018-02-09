@@ -6,6 +6,7 @@
 <!--图片展示-->
     <img :src="src" v-for="(src,index) in srcArr" :key = "index"/>
     <button @click="upload">点击上传</button>
+    <button @click="myTest">测试按钮</button>
   </div>
 </template>
 
@@ -36,6 +37,7 @@ export default {
       // 创建图片文件的url
       const srcUrl = windowURL.createObjectURL(event.target.files[0])
       this.srcArr.push(srcUrl)
+      this.submit()
       console.log('转成文件', this.srcArr)
     },
     submit () {

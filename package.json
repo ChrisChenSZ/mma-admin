@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "babel-polyfill": "^6.26.0",
+    "core-js": "^2.5.3",
     "element-ui": "^2.0.11",
     "jquery": "^3.2.1",
     "js-cookie": "^2.2.0",
@@ -26,7 +28,8 @@
     "sha1": "^1.1.1",
     "vue": "^2.5.2",
     "vue-drag-verify": "^1.0.6",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "wangeditor": "^3.0.15"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -84,7 +87,7 @@
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack-dev-server": "^2.6.1",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

@@ -51,6 +51,23 @@ export default [
     ]
   },
   {
+    path: '/richtext',
+    name: '富文本',
+    component: () => _import('layout/layout'),
+    children: [
+      {
+        name: '富文本1',
+        path: 'one',
+        component: () => _import('richText/richTextOne')
+      },
+      {
+        name: '富文本2',
+        path: 'two',
+        component: () => _import('richText/richTextTwo')
+      }
+    ]
+  },
+  {
     path: '/events',
     name: '赛事',
     component: () => _import('layout/layout'),
