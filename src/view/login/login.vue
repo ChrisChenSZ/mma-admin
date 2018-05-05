@@ -3,6 +3,7 @@
       <div style="margin: 20px;"></div>
       <div class="login-lable">
         <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" :rules="rules" status-icon>
+          <!--账号密码 root admin-->
           <el-form-item label="账号"  prop="name">
             <svg class="icon user" aria-hidden="true">
               <use xlink:href="#icon-iconzh1"></use>

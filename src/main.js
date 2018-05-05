@@ -10,6 +10,8 @@ import api from '@/api/api.js'
 import 'normalize.css'
 import '@/assets/icons/iconfont.js'
 import mixin from '@/common/mixin.js'
+import VueQriously from 'vue-qriously'
+Vue.use(VueQriously)
 require('core-js')
 Vue.use(ElementUI)
 Vue.config.productionTip = false

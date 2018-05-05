@@ -28,6 +28,7 @@
     "sha1": "^1.1.1",
     "vue": "^2.5.2",
     "vue-drag-verify": "^1.0.6",
+    "vue-qriously": "^1.1.1",
     "vue-router": "^3.0.1",
     "wangeditor": "^3.0.15"
   },

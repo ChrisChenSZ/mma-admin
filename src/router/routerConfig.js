@@ -68,6 +68,18 @@ export default [
     ]
   },
   {
+    path: '/qrcode',
+    noDropdown: true,
+    component: () => _import('layout/layout'),
+    children: [
+      {
+        path: 'index',
+        name: 'QRcode',
+        component: () => _import('qrcode/qrcode')
+      }
+    ]
+  },
+  {
     path: '/events',
     name: '赛事',
     component: () => _import('layout/layout'),
